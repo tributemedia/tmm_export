@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * Implements hook_menu()
+ */
+function tmm_export_menu() {
+  $items['tmm_export/test'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'Test',
+    'description' => 'Test page',
+    'page callback' => 'tmm_export_custom_test',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+ *
+ */
+function tmm_export_custom_test() {
+  
+  $data = node_type_get_names();
+
+  return drupal_json_output($data);
+  
+}
